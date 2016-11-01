@@ -8,6 +8,32 @@
   <shelfSet name="JTH Tools" label="">
     <memberToolshelf name="JTH IO"/>
     <memberToolshelf name="JTHCOPTools"/>
-    <memberToolshelf name="JTHVimto"/>
   </shelfSet>
+
+  <toolshelf name="JTH IO" label="JTH IO">
+    <memberTool name="createRops"/>
+  </toolshelf>
+
+  <toolshelf name="JTHCOPTools" label="JTH COP Tools">
+    <memberTool name="folderLoad"/>
+    <memberTool name="wedgeContactSheet"/>
+  </toolshelf>
+
+  <tool name="wedgeContactSheet" label="Wedge Contact Sheet" icon="$HFS/houdini/help/icons/large/COMMON/file.png">
+    <script scriptType="python"><![CDATA[import jthTools
+
+jthTools.COPwedgeContactSheet()]]></script>
+  </tool>
+
+  <tool name="folderLoad" label="Folder Load" icon="$HFS/houdini/help/icons/large/COMMON/file.png">
+    <script scriptType="python"><![CDATA[import jthTools
+
+jthTools.COPloadFromFolder()]]></script>
+  </tool>
+
+  <tool name="createRops" label="Create Rops" icon="$HFS/houdini/help/icons/large/COMMON/file.png">
+    <script scriptType="python"><![CDATA[import jthTools
+
+jthTools.createCacheRops()]]></script>
+  </tool>
 </shelfDocument>
