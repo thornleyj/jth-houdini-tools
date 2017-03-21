@@ -41,7 +41,5 @@ jthTools.createCacheRops()]]></script>
 jthTools.searchReplaceName()]]></script>
   </tool>
 
-  <tool name="cacheUp" label="Cache Up" icon="PLASMA_App">
-    <script scriptType="python"><![CDATA[import freefolkRsync
   
 </shelfDocument>
