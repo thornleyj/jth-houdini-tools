@@ -37,9 +37,11 @@ jthTools.COPloadFromFolder()]]></script>
 
 jthTools.createCacheRops()]]></script>
   </tool>
-  
+
+  <tool name="searchReplaceName" label="Search Replace Name" icon="PLASMA_App">
+    <script scriptType="python"><![CDATA[import jthTools
+
 jthTools.searchReplaceName()]]></script>
   </tool>
 
-  
 </shelfDocument>
