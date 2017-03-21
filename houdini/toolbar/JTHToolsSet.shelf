@@ -12,6 +12,7 @@
 
   <toolshelf name="JTH IO" label="JTH IO">
     <memberTool name="createRops"/>
+    <memberTool name="searchReplaceName"/>
   </toolshelf>
 
   <toolshelf name="JTHCOPTools" label="JTH COP Tools">
@@ -36,4 +37,11 @@ jthTools.COPloadFromFolder()]]></script>
 
 jthTools.createCacheRops()]]></script>
   </tool>
+  
+jthTools.searchReplaceName()]]></script>
+  </tool>
+
+  <tool name="cacheUp" label="Cache Up" icon="PLASMA_App">
+    <script scriptType="python"><![CDATA[import freefolkRsync
+  
 </shelfDocument>
