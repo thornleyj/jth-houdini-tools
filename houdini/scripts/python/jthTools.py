@@ -7,6 +7,17 @@ import hou
 import os
 import math
 
+def searchReplaceName():
+    nodelist = hou.selectedNodes()
+    output = hou.ui.readMultiInput("Search and Replace", ["Search String","Replace String"])
+    searchString = output[1][0]
+    replaceString = output[1][1]
+
+    for node in nodelist:
+        nodeName = node.name()
+        newName = nodeName.replace(searchString,replaceString)
+        node.setName(newName)
+
 def createCacheRops():
     nodelist = hou.selectedNodes()
 
@@ -17,17 +28,17 @@ def createCacheRops():
         if isNull & isCache:
             node.setColor(hou.Color((0,.5,0)))
             ropName = nodeName.replace("CACHE_","")
-            
+
             ropNode = hou.node('/out/').createNode('geometry')
             ropNode.setName(ropName)
             ropNode.setColor(hou.Color((0.75,0.7,0)))
-            
+
             ropNode.parm('soppath').set(node.path())
-            
+
             readNode = node.createOutputNode('file')
             readNode.setName(ropName)
             readNode.setColor(hou.Color((0.75,0.7,0)))
-            
+
             expression = "hou.node('" + ropNode.path() + "').parm('sopoutput').eval()"
             readNode.parm('file').setExpression(expression,hou.exprLanguage.Python)
 
@@ -64,7 +75,7 @@ def COPloadFromFolder():
         copnode = copnet.createNode('file')
         copnode.parm('filename1').set(dirPath+ "/" + item + ".$F4.exr")
         copnode.moveToGoodPosition()
-        
+
 
 def COPwedgeContactSheet():
 
@@ -78,12 +89,15 @@ def COPwedgeContactSheet():
 
     for index, node in enumerate(nodelist):
         nodeName = node.name()
-        overlay = node.parm('filename1').eval()
+        overlayParm = node.parm('filename1').eval()
 
-#        overlay = overlay[:overlay.index("_F4_exr")]
-        overlay = overlay[:overlay.index(".exr")-5]
-        overlay = overlay[overlay.rindex("_wedge_"):]
-        overlay = overlay.replace("_wedge_","")
+        overlayList = overlayParm.split(".")
+
+        if "wedge" in overlayList[0]:
+            overlay = overlayList[0][overlayList[0].rindex("_wedge_"):]
+            overlay = overlayList[0].replace("_wedge_","")
+        else:
+            overlay = overlayList[0][overlayList[0].rindex("/")+1:]
 
         fontNode = node.createOutputNode('font')
         fontNode.parm('text').set(overlay)
@@ -132,7 +146,3 @@ def COPwedgeContactSheet():
 
 #    for mergeNode in mergeNodes:
 #        layerNode.setInput(1,bgnode,0)
-
-
-
-
