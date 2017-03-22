@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<shelfDocument>
+  <!-- This file contains definitions of shelves, toolbars, and tools.
+ It should not be hand-edited when it is being used by the application.
+ Note, that two definitions of the same element are not allowed in
+ a single file. -->
+
+  <shelfSet name="JTH Tools" label="">
+    <memberToolshelf name="JTH IO"/>
+    <memberToolshelf name="JTHCOPTools"/>
+  </shelfSet>
+
+  <toolshelf name="JTH IO" label="JTH IO">
+    <memberTool name="createRops"/>
+    <memberTool name="searchReplaceName"/>
+  </toolshelf>
+
+  <toolshelf name="JTHCOPTools" label="JTH COP Tools">
+    <memberTool name="folderLoad"/>
+    <memberTool name="wedgeContactSheet"/>
+  </toolshelf>
+
+  <tool name="wedgeContactSheet" label="Wedge Contact Sheet" icon="$HFS/houdini/help/icons/large/COMMON/file.png">
+    <script scriptType="python"><![CDATA[import jthTools
+
+jthTools.COPwedgeContactSheet()]]></script>
+  </tool>
+
+  <tool name="folderLoad" label="Folder Load" icon="$HFS/houdini/help/icons/large/COMMON/file.png">
+    <script scriptType="python"><![CDATA[import jthTools
+
+jthTools.COPloadFromFolder()]]></script>
+  </tool>
+
+  <tool name="createRops" label="Create Rops" icon="$HFS/houdini/help/icons/large/COMMON/file.png">
+    <script scriptType="python"><![CDATA[import jthTools
+
+jthTools.createCacheRops()]]></script>
+  </tool>
+
+  <tool name="searchReplaceName" label="Search Replace Name" icon="PLASMA_App">
+    <script scriptType="python"><![CDATA[import jthTools
+
+jthTools.searchReplaceName()]]></script>
+  </tool>
+
+</shelfDocument>
